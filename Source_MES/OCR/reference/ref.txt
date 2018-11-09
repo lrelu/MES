@@ -1,0 +1,9 @@
+﻿참조사이트
+C# Tesseract 강좌
+https://076923.github.io/posts/C-tesseract-1/
+
+OpenCV 라이브러리 분석
+http://mind3002.blogspot.com/2016/01/cc-opencv-license-plates-recognition.html
+
+EmguCV 분석
+http://icodebroker.tistory.com/category/EmguCV/WinForm?page=1
