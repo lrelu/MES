@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnHistogram = new System.Windows.Forms.Button();
 			this.btnGetEdge = new System.Windows.Forms.Button();
@@ -35,6 +36,10 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.btnHistogramEndIn = new System.Windows.Forms.Button();
+			this.cmsView = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmsViewRaw = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmsViewHistogram = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -42,10 +47,12 @@
 			this.splitContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.cmsView.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btnHistogramEndIn);
 			this.panel1.Controls.Add(this.btnHistogram);
 			this.panel1.Controls.Add(this.btnGetEdge);
 			this.panel1.Controls.Add(this.btnLoad);
@@ -113,9 +120,12 @@
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Tag = "pic1";
+			this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
 			// 
 			// pictureBox2
 			// 
+			this.pictureBox2.ContextMenuStrip = this.cmsView;
 			this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pictureBox2.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox2.Name = "pictureBox2";
@@ -123,6 +133,41 @@
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox2.TabIndex = 1;
 			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Tag = "pic2";
+			// 
+			// btnHistogramEndIn
+			// 
+			this.btnHistogramEndIn.Enabled = false;
+			this.btnHistogramEndIn.Location = new System.Drawing.Point(3, 225);
+			this.btnHistogramEndIn.Name = "btnHistogramEndIn";
+			this.btnHistogramEndIn.Size = new System.Drawing.Size(69, 65);
+			this.btnHistogramEndIn.TabIndex = 0;
+			this.btnHistogramEndIn.Text = "End In Histogram";
+			this.btnHistogramEndIn.UseVisualStyleBackColor = true;
+			this.btnHistogramEndIn.Click += new System.EventHandler(this.btnHistogramEndIn_Click);
+			// 
+			// cmsView
+			// 
+			this.cmsView.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.cmsView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsViewRaw,
+            this.cmsViewHistogram});
+			this.cmsView.Name = "cmsView";
+			this.cmsView.Size = new System.Drawing.Size(248, 52);
+			// 
+			// cmsViewRaw
+			// 
+			this.cmsViewRaw.Name = "cmsViewRaw";
+			this.cmsViewRaw.Size = new System.Drawing.Size(247, 24);
+			this.cmsViewRaw.Text = "View raw_data";
+			this.cmsViewRaw.Click += new System.EventHandler(this.cmsViewRaw_Click);
+			// 
+			// cmsViewHistogram
+			// 
+			this.cmsViewHistogram.Name = "cmsViewHistogram";
+			this.cmsViewHistogram.Size = new System.Drawing.Size(247, 24);
+			this.cmsViewHistogram.Text = "View histogram Diagram";
+			this.cmsViewHistogram.Click += new System.EventHandler(this.cmsViewHistogram_Click);
 			// 
 			// Form1
 			// 
@@ -140,6 +185,7 @@
 			this.splitContainer1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			this.cmsView.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -153,6 +199,10 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.Button btnHistogram;
+		private System.Windows.Forms.Button btnHistogramEndIn;
+		private System.Windows.Forms.ContextMenuStrip cmsView;
+		private System.Windows.Forms.ToolStripMenuItem cmsViewRaw;
+		private System.Windows.Forms.ToolStripMenuItem cmsViewHistogram;
 	}
 }
 

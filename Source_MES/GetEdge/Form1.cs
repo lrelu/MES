@@ -39,6 +39,8 @@ namespace GetEdge
 					}
 				}
 			}
+
+			outImage = (System.Byte[,])inImage.Clone();
 		}
 
 		private void btnHistogram_Click(object sender, EventArgs e)
@@ -70,7 +72,109 @@ namespace GetEdge
 				for (int k = 0; k < inW; k++)
 				{
 					double result = ((double)inImage[i, k] - minValue) / (maxValue - minValue) * HIGH;
+					if (result > 255)
+						result = 255;
+					if (result < 0)
+						result = 0;
 					outImage[i, k] = (System.Byte)result;
+				}
+			}
+
+			DisplayImage(outImage, pictureBox2);
+		}
+
+		private void cmsViewHistogram_Click(object sender, EventArgs e)
+		{
+			int[] countList = new int[256];
+			double[] normalList = new double[256];
+
+			// calc frequency
+			for (int i = 0; i < inH; i++)
+				for (int k = 0; k < inW; k++)
+						countList[outImage[i, k]]++;
+
+			// Nomalize
+			// (frequency - minValue) / (maxValue - minValue) * High
+			int maxValue = countList.Max();
+			int minValue = countList.Min();
+
+			//int minValue, maxValue;
+			// 최대, 최소값 찾기
+			minValue = maxValue = inImage[0, 0];
+			for (int i = 0; i < countList.Length; i++)
+			{
+				if (countList[i] > maxValue)
+					maxValue = countList[i];
+				if (countList[i] < minValue)
+					minValue = countList[i];
+			}
+
+			double HIGH = 256.0;
+			for (int i = 0; i < normalList.Length; i++)
+			{
+				normalList[i] = (double)(countList[i] - minValue) / (maxValue - minValue) * HIGH;
+			}
+
+			Frm_Histogram frm_histogram = new Frm_Histogram();
+			frm_histogram.DrawHistogram(normalList);
+			frm_histogram.Show();
+		}
+
+		private void cmsViewRaw_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnHistogramEndIn_Click(object sender, EventArgs e)
+		{
+			outH = inH;
+			outW = inW;
+
+			//outImage = new System.Byte[0, 0];
+			outImage = new System.Byte[outH, outW];
+
+			// Histogram - Stretching
+			// Out = (in - minValue) / (maxValue - minValue) * High
+			int HIGH = 255;
+			int minValue, maxValue;
+			// setting temporary value
+			minValue = maxValue = inImage[0, 0];
+
+			for (int i = 0; i < inH; i++)
+			{
+				for (int k = 0; k < inW; k++)
+				{
+					maxValue = inImage[i, k] > maxValue ? inImage[i, k] : maxValue;
+					minValue = inImage[i, k] < minValue ? inImage[i, k] : minValue;
+				}
+			}
+
+			minValue += 50;
+			maxValue -= 50;
+
+			for (int i = 0; i < inH; i++)
+			{
+				for (int k = 0; k < inW; k++)
+				{
+					double result = ((double)inImage[i, k] - minValue) / (maxValue - minValue) * HIGH;
+					if (result > 255)
+						result = 255;
+					if (result < 0)
+						result = 0;
+					outImage[i, k] = (System.Byte)result;
+				}
+			}
+
+			DisplayImage(outImage, pictureBox2);
+		}
+
+		private void pictureBox1_DoubleClick(object sender, EventArgs e)
+		{
+			for (int i = 0; i < outH; i++)
+			{
+				for (int k = 0; k < outW; k++)
+				{
+					outImage[i, k] = inImage[i, k];
 				}
 			}
 
@@ -112,6 +216,7 @@ namespace GetEdge
 
 					this.btnGetEdge.Enabled = true;
 					this.btnHistogram.Enabled = true;
+					this.btnHistogramEndIn.Enabled = true;
 				}
 			}
 		}
