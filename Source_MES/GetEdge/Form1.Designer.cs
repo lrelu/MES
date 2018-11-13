@@ -29,11 +29,12 @@
 		private void InitializeComponent()
 		{
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnHistogram = new System.Windows.Forms.Button();
+			this.btnGetEdge = new System.Windows.Forms.Button();
+			this.btnLoad = new System.Windows.Forms.Button();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.btnLoad = new System.Windows.Forms.Button();
-			this.btnGetEdge = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -45,6 +46,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.btnHistogram);
 			this.panel1.Controls.Add(this.btnGetEdge);
 			this.panel1.Controls.Add(this.btnLoad);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -52,6 +54,38 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(78, 512);
 			this.panel1.TabIndex = 0;
+			// 
+			// btnHistogram
+			// 
+			this.btnHistogram.Enabled = false;
+			this.btnHistogram.Location = new System.Drawing.Point(3, 154);
+			this.btnHistogram.Name = "btnHistogram";
+			this.btnHistogram.Size = new System.Drawing.Size(69, 65);
+			this.btnHistogram.TabIndex = 0;
+			this.btnHistogram.Text = "Histogram";
+			this.btnHistogram.UseVisualStyleBackColor = true;
+			this.btnHistogram.Click += new System.EventHandler(this.btnHistogram_Click);
+			// 
+			// btnGetEdge
+			// 
+			this.btnGetEdge.Enabled = false;
+			this.btnGetEdge.Location = new System.Drawing.Point(3, 83);
+			this.btnGetEdge.Name = "btnGetEdge";
+			this.btnGetEdge.Size = new System.Drawing.Size(69, 65);
+			this.btnGetEdge.TabIndex = 0;
+			this.btnGetEdge.Text = "Get Edge";
+			this.btnGetEdge.UseVisualStyleBackColor = true;
+			this.btnGetEdge.Click += new System.EventHandler(this.btnGetEdge_Click);
+			// 
+			// btnLoad
+			// 
+			this.btnLoad.Location = new System.Drawing.Point(3, 12);
+			this.btnLoad.Name = "btnLoad";
+			this.btnLoad.Size = new System.Drawing.Size(69, 65);
+			this.btnLoad.TabIndex = 0;
+			this.btnLoad.Text = "Load";
+			this.btnLoad.UseVisualStyleBackColor = true;
+			this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
 			// 
 			// splitContainer1
 			// 
@@ -90,26 +124,6 @@
 			this.pictureBox2.TabIndex = 1;
 			this.pictureBox2.TabStop = false;
 			// 
-			// btnLoad
-			// 
-			this.btnLoad.Location = new System.Drawing.Point(3, 12);
-			this.btnLoad.Name = "btnLoad";
-			this.btnLoad.Size = new System.Drawing.Size(69, 65);
-			this.btnLoad.TabIndex = 0;
-			this.btnLoad.Text = "Load";
-			this.btnLoad.UseVisualStyleBackColor = true;
-			this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-			// 
-			// btnGetEdge
-			// 
-			this.btnGetEdge.Location = new System.Drawing.Point(3, 83);
-			this.btnGetEdge.Name = "btnGetEdge";
-			this.btnGetEdge.Size = new System.Drawing.Size(69, 65);
-			this.btnGetEdge.TabIndex = 0;
-			this.btnGetEdge.Text = "Get Edge";
-			this.btnGetEdge.UseVisualStyleBackColor = true;
-			this.btnGetEdge.Click += new System.EventHandler(this.btnGetEdge_Click);
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -138,6 +152,7 @@
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.Button btnHistogram;
 	}
 }
 

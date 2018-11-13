@@ -41,6 +41,42 @@ namespace GetEdge
 			}
 		}
 
+		private void btnHistogram_Click(object sender, EventArgs e)
+		{
+			outH = inH;
+			outW = inW;
+
+			//outImage = new System.Byte[0, 0];
+			outImage = new System.Byte[outH, outW];
+
+			// Histogram - Stretching
+			// Out = (in - minValue) / (maxValue - minValue) * High
+			int HIGH = 255;
+			int minValue, maxValue;
+			// setting temporary value
+			minValue = maxValue = inImage[0, 0];
+
+			for (int i = 0; i < inH; i++)
+			{
+				for (int k = 0; k < inW; k++)
+				{
+					maxValue = inImage[i, k] > maxValue ? inImage[i, k] : maxValue;
+					minValue = inImage[i, k] < minValue ? inImage[i, k] : minValue;
+				}
+			}
+
+			for (int i = 0; i < inH; i++)
+			{
+				for (int k = 0; k < inW; k++)
+				{
+					double result = ((double)inImage[i, k] - minValue) / (maxValue - minValue) * HIGH;
+					outImage[i, k] = (System.Byte)result;
+				}
+			}
+
+			DisplayImage(outImage, pictureBox2);
+		}
+
 		private void DisplayImage(byte[,] image, Control ctl)
 		{
 			System.Byte pixel;
@@ -74,17 +110,20 @@ namespace GetEdge
 					this.LoadImage(dialog.FileName);
 					this.DisplayImage(this.inImage, this.pictureBox1);
 
+					this.btnGetEdge.Enabled = true;
+					this.btnHistogram.Enabled = true;
 				}
 			}
 		}
 
 		private void btnGetEdge_Click(object sender, EventArgs e)
 		{
-			double[,] eboMask = { { -1.0, 0.0, 0.0 }, { 0.0, 0.0, 0.0 }, { 0.0, 0.0, 1.0 } };
-			//double[,] edgeHMask = { { 0.0, -1.0, 0.0 }, { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } };
-			//double[,] edgeVMask = { { 0.0, 0.0, 0.0 }, { -1.0, 1.0, 0.0 }, { 0.0, 0.0, 1.0 } };
+			//double[,] mask = { { -1.0, 0.0, 0.0 }, { 0.0, 0.0, 0.0 }, { 0.0, 0.0, 1.0 } };	//엠보싱
+			//double[,] mask = { { 0.0, -1.0, 0.0 }, { 0.0, 1.0, 0.0 }, { 0.0, 0.0, 0.0 } };	//수평엣지
+			//double[,] mask = { { 0.0, 0.0, 0.0 }, { -1.0, 1.0, 0.0 }, { 0.0, 0.0, 0.0 } };      //세로 엣2지
+			double[,] mask = { { 0.0, -1.0, 0.0 }, { -1.0, 2.0, 0.0 }, { 0.0, 0.0, 0.0 } };      //쌍방 엣지
 
-			System.Byte[,] tempOut = this.MakeFilter(eboMask);
+			System.Byte[,] tempOut = this.MakeFilter(mask);
 
 			this.DisplayImage(tempOut, this.pictureBox2);
 		}
@@ -113,7 +152,8 @@ namespace GetEdge
 					//sum = sum < 0.0 ? 0.0 : sum;
 					//tempOut[i, k] = (System.Byte)sum;
 
-					tempOut[i, k] = (System.Byte)(sum + 127);
+					//tempOut[i, k] = (System.Byte)(sum + 127);
+					tempOut[i, k] = (System.Byte)(sum);
 				}
 			}
 
