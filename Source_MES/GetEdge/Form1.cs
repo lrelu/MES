@@ -111,7 +111,7 @@ namespace GetEdge
 
 			double HIGH = 256.0;
 			for (int i = 0; i < normalList.Length; i++)
-			{
+			{ 
 				normalList[i] = (double)(countList[i] - minValue) / (maxValue - minValue) * HIGH;
 			}
 
@@ -181,6 +181,59 @@ namespace GetEdge
 			DisplayImage(outImage, pictureBox2);
 		}
 
+		private void btnHistogram_Equilize_Click(object sender, EventArgs e)
+		{
+			// 히스토그램 평활화
+			// 어두운쪽이나 색상이 한곳에 몰려서 보정하기 어려운 상황에서 쓰는 알고리즘
+			// 3단계
+			// 1. 히스토그램
+			// 2. 누적 히스토그램
+			// 3. 누적 히스토그램 정규화 (sum[i] * (1 / all pixel) * HIGH) 
+
+			outH = inH;
+			outW = inW;
+
+			//outImage = new System.Byte[0, 0];
+			outImage = new System.Byte[outH, outW];
+
+			int[] histo = new int[256];					// 원영상 히스토그램
+			int[] sumHisto = new int[256];				// 누적 히스토그램
+			double[] normalHisto = new double[256];     // 정규화된 누적 히스토그램
+
+			int HIGH = 255;
+
+			// 원영상 히스토그램
+			for (int i = 0; i < inH; i++)
+				for (int k = 0; k < inW; k++)
+					histo[inImage[i, k]]++;
+
+			// 누적 히스토림그램
+			int sum = 0;
+			for (int i = 0; i < histo.Length; i++)
+			{
+				sum += histo[i];
+				sumHisto[i] = sum;
+			}
+
+			// 정규화된 누적 히스토그램
+			for (int i = 0; i < normalHisto.Length; i++)
+			{
+				normalHisto[i] = ((double)sumHisto[i] / (inH * inW)) * HIGH;
+			}
+
+			// 원 픽셀값을 정규화된 픽셀값으로 변환
+			for (int i = 0; i < inH; i++)
+			{
+				for (int k = 0; k < inW; k++)
+				{
+					int index = inImage[i, k];
+					outImage[i, k] = (System.Byte)normalHisto[index];
+				}
+			}
+
+			DisplayImage(outImage, pictureBox2);
+		}
+
 		private void DisplayImage(byte[,] image, Control ctl)
 		{
 			System.Byte pixel;
@@ -217,6 +270,7 @@ namespace GetEdge
 					this.btnGetEdge.Enabled = true;
 					this.btnHistogram.Enabled = true;
 					this.btnHistogramEndIn.Enabled = true;
+					this.btnHistogram_Equilize.Enabled = true;
 				}
 			}
 		}

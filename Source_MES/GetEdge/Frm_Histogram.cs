@@ -33,7 +33,7 @@ namespace GetEdge
 				for (int k = 0; k < (int)normalList[i]; k++)
 					outImage[255 - k, i] = 0;
 
-			this.Size = new Size(outH, outW);
+			this.Size = new Size(outH + 20, outW + 100);
 			System.Byte data; Color c;
 			for (int i = 0; i < outH; i++)
 			{
