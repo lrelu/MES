@@ -30,18 +30,21 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnMultiMorph = new System.Windows.Forms.Button();
+			this.btnMorph = new System.Windows.Forms.Button();
+			this.btnHistogram_Equilize = new System.Windows.Forms.Button();
+			this.btnHistogramEndIn = new System.Windows.Forms.Button();
 			this.btnHistogram = new System.Windows.Forms.Button();
 			this.btnGetEdge = new System.Windows.Forms.Button();
 			this.btnLoad = new System.Windows.Forms.Button();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.btnHistogramEndIn = new System.Windows.Forms.Button();
 			this.cmsView = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.cmsViewRaw = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmsViewHistogram = new System.Windows.Forms.ToolStripMenuItem();
-			this.btnHistogram_Equilize = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.btnColor = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -54,7 +57,9 @@
 			// 
 			// panel1
 			// 
-			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.btnColor);
+			this.panel1.Controls.Add(this.btnMultiMorph);
+			this.panel1.Controls.Add(this.btnMorph);
 			this.panel1.Controls.Add(this.btnHistogram_Equilize);
 			this.panel1.Controls.Add(this.btnHistogramEndIn);
 			this.panel1.Controls.Add(this.btnHistogram);
@@ -66,12 +71,56 @@
 			this.panel1.Size = new System.Drawing.Size(78, 512);
 			this.panel1.TabIndex = 0;
 			// 
+			// btnMultiMorph
+			// 
+			this.btnMultiMorph.Enabled = false;
+			this.btnMultiMorph.Location = new System.Drawing.Point(4, 342);
+			this.btnMultiMorph.Name = "btnMultiMorph";
+			this.btnMultiMorph.Size = new System.Drawing.Size(69, 48);
+			this.btnMultiMorph.TabIndex = 0;
+			this.btnMultiMorph.Text = "Multi Morph";
+			this.btnMultiMorph.UseVisualStyleBackColor = true;
+			this.btnMultiMorph.Click += new System.EventHandler(this.btnMultiMorph_Click);
+			// 
+			// btnMorph
+			// 
+			this.btnMorph.Enabled = false;
+			this.btnMorph.Location = new System.Drawing.Point(4, 287);
+			this.btnMorph.Name = "btnMorph";
+			this.btnMorph.Size = new System.Drawing.Size(69, 48);
+			this.btnMorph.TabIndex = 0;
+			this.btnMorph.Text = "Morph";
+			this.btnMorph.UseVisualStyleBackColor = true;
+			this.btnMorph.Click += new System.EventHandler(this.btnMofing_Click);
+			// 
+			// btnHistogram_Equilize
+			// 
+			this.btnHistogram_Equilize.Enabled = false;
+			this.btnHistogram_Equilize.Location = new System.Drawing.Point(4, 232);
+			this.btnHistogram_Equilize.Name = "btnHistogram_Equilize";
+			this.btnHistogram_Equilize.Size = new System.Drawing.Size(69, 48);
+			this.btnHistogram_Equilize.TabIndex = 0;
+			this.btnHistogram_Equilize.Text = "평활화";
+			this.btnHistogram_Equilize.UseVisualStyleBackColor = true;
+			this.btnHistogram_Equilize.Click += new System.EventHandler(this.btnHistogram_Equilize_Click);
+			// 
+			// btnHistogramEndIn
+			// 
+			this.btnHistogramEndIn.Enabled = false;
+			this.btnHistogramEndIn.Location = new System.Drawing.Point(4, 177);
+			this.btnHistogramEndIn.Name = "btnHistogramEndIn";
+			this.btnHistogramEndIn.Size = new System.Drawing.Size(69, 48);
+			this.btnHistogramEndIn.TabIndex = 0;
+			this.btnHistogramEndIn.Text = "End In Histogram";
+			this.btnHistogramEndIn.UseVisualStyleBackColor = true;
+			this.btnHistogramEndIn.Click += new System.EventHandler(this.btnHistogramEndIn_Click);
+			// 
 			// btnHistogram
 			// 
 			this.btnHistogram.Enabled = false;
-			this.btnHistogram.Location = new System.Drawing.Point(3, 154);
+			this.btnHistogram.Location = new System.Drawing.Point(4, 122);
 			this.btnHistogram.Name = "btnHistogram";
-			this.btnHistogram.Size = new System.Drawing.Size(69, 65);
+			this.btnHistogram.Size = new System.Drawing.Size(69, 48);
 			this.btnHistogram.TabIndex = 0;
 			this.btnHistogram.Text = "Histogram";
 			this.btnHistogram.UseVisualStyleBackColor = true;
@@ -80,9 +129,9 @@
 			// btnGetEdge
 			// 
 			this.btnGetEdge.Enabled = false;
-			this.btnGetEdge.Location = new System.Drawing.Point(3, 83);
+			this.btnGetEdge.Location = new System.Drawing.Point(4, 67);
 			this.btnGetEdge.Name = "btnGetEdge";
-			this.btnGetEdge.Size = new System.Drawing.Size(69, 65);
+			this.btnGetEdge.Size = new System.Drawing.Size(69, 48);
 			this.btnGetEdge.TabIndex = 0;
 			this.btnGetEdge.Text = "Get Edge";
 			this.btnGetEdge.UseVisualStyleBackColor = true;
@@ -90,9 +139,9 @@
 			// 
 			// btnLoad
 			// 
-			this.btnLoad.Location = new System.Drawing.Point(3, 12);
+			this.btnLoad.Location = new System.Drawing.Point(4, 12);
 			this.btnLoad.Name = "btnLoad";
-			this.btnLoad.Size = new System.Drawing.Size(69, 65);
+			this.btnLoad.Size = new System.Drawing.Size(69, 48);
 			this.btnLoad.TabIndex = 0;
 			this.btnLoad.Text = "Load";
 			this.btnLoad.UseVisualStyleBackColor = true;
@@ -139,17 +188,6 @@
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Tag = "pic2";
 			// 
-			// btnHistogramEndIn
-			// 
-			this.btnHistogramEndIn.Enabled = false;
-			this.btnHistogramEndIn.Location = new System.Drawing.Point(3, 225);
-			this.btnHistogramEndIn.Name = "btnHistogramEndIn";
-			this.btnHistogramEndIn.Size = new System.Drawing.Size(69, 65);
-			this.btnHistogramEndIn.TabIndex = 0;
-			this.btnHistogramEndIn.Text = "End In Histogram";
-			this.btnHistogramEndIn.UseVisualStyleBackColor = true;
-			this.btnHistogramEndIn.Click += new System.EventHandler(this.btnHistogramEndIn_Click);
-			// 
 			// cmsView
 			// 
 			this.cmsView.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -173,26 +211,20 @@
 			this.cmsViewHistogram.Text = "View histogram Diagram";
 			this.cmsViewHistogram.Click += new System.EventHandler(this.cmsViewHistogram_Click);
 			// 
-			// btnHistogram_Equilize
+			// timer1
 			// 
-			this.btnHistogram_Equilize.Enabled = false;
-			this.btnHistogram_Equilize.Location = new System.Drawing.Point(3, 296);
-			this.btnHistogram_Equilize.Name = "btnHistogram_Equilize";
-			this.btnHistogram_Equilize.Size = new System.Drawing.Size(69, 65);
-			this.btnHistogram_Equilize.TabIndex = 0;
-			this.btnHistogram_Equilize.Text = "평활화";
-			this.btnHistogram_Equilize.UseVisualStyleBackColor = true;
-			this.btnHistogram_Equilize.Click += new System.EventHandler(this.btnHistogram_Equilize_Click);
+			this.timer1.Interval = 50;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
-			// button1
+			// btnColor
 			// 
-			this.button1.Enabled = false;
-			this.button1.Location = new System.Drawing.Point(3, 367);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(69, 65);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "모핑";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnColor.Location = new System.Drawing.Point(4, 396);
+			this.btnColor.Name = "btnColor";
+			this.btnColor.Size = new System.Drawing.Size(69, 48);
+			this.btnColor.TabIndex = 0;
+			this.btnColor.Text = "Color";
+			this.btnColor.UseVisualStyleBackColor = true;
+			this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
 			// 
 			// Form1
 			// 
@@ -229,7 +261,10 @@
 		private System.Windows.Forms.ToolStripMenuItem cmsViewRaw;
 		private System.Windows.Forms.ToolStripMenuItem cmsViewHistogram;
 		private System.Windows.Forms.Button btnHistogram_Equilize;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnMorph;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Button btnMultiMorph;
+		private System.Windows.Forms.Button btnColor;
 	}
 }
 

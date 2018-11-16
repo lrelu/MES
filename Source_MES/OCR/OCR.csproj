@@ -107,6 +107,9 @@
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
     <Content Include="reference\ref.txt" />
+    <Content Include="resource\kor_scan2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="resource\sample_image_kor.jpg" />
     <Content Include="x64\liblept172.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

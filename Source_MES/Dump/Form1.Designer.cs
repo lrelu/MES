@@ -30,6 +30,14 @@
 		{
 			this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
 			this.btnStart = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.trackBar1 = new System.Windows.Forms.TrackBar();
+			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// circularProgressBar1
@@ -37,7 +45,7 @@
 			this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
 			this.circularProgressBar1.AnimationSpeed = 500;
 			this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
-			this.circularProgressBar1.Font = new System.Drawing.Font("굴림", 72F, System.Drawing.FontStyle.Bold);
+			this.circularProgressBar1.Font = new System.Drawing.Font("굴림", 14F, System.Drawing.FontStyle.Bold);
 			this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 			this.circularProgressBar1.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.circularProgressBar1.InnerMargin = 2;
@@ -50,15 +58,15 @@
 			this.circularProgressBar1.OuterWidth = 26;
 			this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.circularProgressBar1.ProgressWidth = 25;
-			this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("굴림", 36F);
-			this.circularProgressBar1.Size = new System.Drawing.Size(320, 320);
+			this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("굴림", 10F);
+			this.circularProgressBar1.Size = new System.Drawing.Size(131, 126);
 			this.circularProgressBar1.StartAngle = 270;
 			this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
 			this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-			this.circularProgressBar1.SubscriptText = ".23";
+			this.circularProgressBar1.SubscriptText = ".kg";
 			this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
 			this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-			this.circularProgressBar1.SuperscriptText = "°C";
+			this.circularProgressBar1.SuperscriptText = "";
 			this.circularProgressBar1.TabIndex = 0;
 			this.circularProgressBar1.Text = "0";
 			this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
@@ -74,16 +82,85 @@
 			this.btnStart.UseVisualStyleBackColor = true;
 			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(38, 247);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(116, 104);
+			this.button1.TabIndex = 2;
+			this.button1.Text = "button1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(35, 174);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(45, 15);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "label1";
+			// 
+			// textBox1
+			// 
+			this.textBox1.Location = new System.Drawing.Point(38, 208);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(160, 25);
+			this.textBox1.TabIndex = 4;
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(241, 144);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(100, 25);
+			this.textBox2.TabIndex = 5;
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(241, 191);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(100, 25);
+			this.textBox3.TabIndex = 5;
+			this.textBox3.Text = "5";
+			this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
+			this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
+			// 
+			// textBox4
+			// 
+			this.textBox4.Location = new System.Drawing.Point(241, 236);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.Size = new System.Drawing.Size(100, 25);
+			this.textBox4.TabIndex = 5;
+			// 
+			// trackBar1
+			// 
+			this.trackBar1.Location = new System.Drawing.Point(366, 177);
+			this.trackBar1.Name = "trackBar1";
+			this.trackBar1.Size = new System.Drawing.Size(104, 56);
+			this.trackBar1.TabIndex = 6;
+			this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+			this.trackBar1.Leave += new System.EventHandler(this.trackBar1_Leave);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(565, 389);
+			this.Controls.Add(this.trackBar1);
+			this.Controls.Add(this.textBox4);
+			this.Controls.Add(this.textBox3);
+			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnStart);
 			this.Controls.Add(this.circularProgressBar1);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
+			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -91,6 +168,13 @@
 
 		private CircularProgressBar.CircularProgressBar circularProgressBar1;
 		private System.Windows.Forms.Button btnStart;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.TrackBar trackBar1;
 	}
 }
 

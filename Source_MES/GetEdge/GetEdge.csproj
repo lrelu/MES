@@ -59,6 +59,12 @@
     <Compile Include="Frm_Histogram.Designer.cs">
       <DependentUpon>Frm_Histogram.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_HSI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_HSI.Designer.cs">
+      <DependentUpon>Frm_HSI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_RawData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Histogram.resx">
       <DependentUpon>Frm_Histogram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_HSI.resx">
+      <DependentUpon>Frm_HSI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_RawData.resx">
       <DependentUpon>Frm_RawData.cs</DependentUpon>

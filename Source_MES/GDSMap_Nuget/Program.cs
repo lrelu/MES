@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GetEdge
+namespace GDSMap_Nuget
 {
 	static class Program
 	{
@@ -16,7 +15,7 @@ namespace GetEdge
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Frm_HSI());
+			Application.Run(new Form1());
 		}
 	}
 }

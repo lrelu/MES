@@ -46,6 +46,9 @@ namespace Dump
 				this.circularProgressBar1.Value = value;
 				this.circularProgressBar1.Text = value.ToString();
 				this.circularProgressBar1.Update();
+
+				//this.progressBar1.Value = value;
+				//this.progressBar1.Update();
 			}
 		}
 
@@ -69,6 +72,50 @@ namespace Dump
 				Thread.Sleep(100);
 			}
 			
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			// 값 불러오기
+			this.label1.Text = "Load by Form Load";
+			this.textBox1.Text = "Load by Form Load";
+
+			this.trackBar1.Visible = false;
+		}
+
+		public void LoadData()
+		{
+			// 값 불러오기
+			this.label1.Text = "Load by Function";
+			this.textBox1.Text = "Load by Function";
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Form2 form2 = new Form2(this);
+			form2.Show();
+		}
+
+		private void textBox3_Enter(object sender, EventArgs e)
+		{
+			this.trackBar1.Visible = true;
+			this.trackBar1.Value = int.Parse(this.textBox3.Text.Trim());
+		}
+
+		private void trackBar1_Scroll(object sender, EventArgs e)
+		{
+			this.textBox3.Text = this.trackBar1.Value.ToString();
+		}
+
+		private void trackBar1_Leave(object sender, EventArgs e)
+		{
+			this.trackBar1.Visible = false;
+		}
+
+		private void textBox3_Leave(object sender, EventArgs e)
+		{
+			if (!this.trackBar1.Focused)
+				this.trackBar1.Visible = false;
 		}
 	}
 }
